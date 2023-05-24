@@ -1,0 +1,13 @@
+Course,Position,Weighting
+Course A,T1,1.0
+Course A,T2,0.5
+Course A,T3,0.5
+Course B,T1,1.0
+Course B,T2,0.25
+Course C,T1,1.0
+Course C,T2,1.0
+Course C,T3,0.35
+Course D,T1,1.0
+Course D,T2,0.5
+Course D,T3,0.25
+Course D,T7,1.0
