@@ -1,16 +1,29 @@
-# This is a sample Python script.
+# Import necessary functions and classes from the other files
+from parse import read_course_ta_requirements
+from parse import read_course_director_requests
+from parse import read_grad_student_requests
+from parse import
+from logic import assign_grad_students
+from report import generate_assignment_report
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Step 1: Read course TA requirements
+courses = read_course_ta_requirements("course_ta_requirements.csv")
 
+# Step 2: Read course director requests
+course_directors = read_course_director_requests("course_director_requests.csv")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Step 3: Read grad student requests
+grad_students = read_grad_student_requests("grad_student_requests.csv")
 
+# Step 4: Assign graduate students to positions
+assign_grad_students(courses, course_directors, grad_students)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Step 5: Generate assignment report
+report = generate_assignment_report(courses)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Print the report
+print(report)
+
+# Save the report to a file
+with open("assignment_report.txt", "w") as file:
+    file.write(report)
