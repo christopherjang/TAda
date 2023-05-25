@@ -1,3 +1,5 @@
+from classes import *
+
 def assign_grad_students(courses, course_directors, grad_students):
     assigned_students = set()  # Set to keep track of assigned students
 
@@ -18,7 +20,6 @@ def assign_grad_students(courses, course_directors, grad_students):
             # Get the grad students who meet the criteria and have not been assigned to another course
             available_students = [student for student in grad_students.values()
                                   if (course_name in student.requests or student.name in director_requests) and
-                                  all(course_name not in student.preferences for course_name in position.preferences) and
                                   course_name in student.experience and
                                   student.name not in assigned_students]
 
@@ -34,6 +35,3 @@ def assign_grad_students(courses, course_directors, grad_students):
                 print("No suitable grad student available")
 
     print("\nAssignment process completed.")
-
-# Call the assignment function
-assign_grad_students(courses, course_directors, grad_students)

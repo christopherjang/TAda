@@ -1,5 +1,5 @@
 # Import necessary functions and classes from the other files
-from classes import Course
+from classes import *
 from parse import read_course_ta_requirements
 from parse import read_course_director_requests
 from parse import read_grad_students_requests
@@ -16,7 +16,7 @@ course_ta_requirements_df = read_course_ta_requirements("course_ta_requirements.
 course_director_requests_df = read_course_director_requests("course_director_requests.csv")
 
 # Step 3: Read grad student requests
-grad_students_requests_df = read_grad_students_requests("grad_student_requests.csv")
+grad_students_requests_df = read_grad_students_requests("grad_students_requests.csv")
 
 # Step 4: Read course director avoids
 course_director_avoid_df = read_course_director_avoid("course_director_avoid.csv")
@@ -99,7 +99,8 @@ for _, row in grad_students_experience_df.iterrows():
 assign_grad_students(courses, course_directors, grad_students)
 
 # Step 11: Generate assignment report
-report = generate_assignment_report(courses)
+report = generate_assignment_report(courses, course_directors, grad_students)
+
 
 # Print the report
 print(report)
