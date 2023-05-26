@@ -98,10 +98,8 @@ for _, row in grad_students_experience_df.iterrows():
 # Step 10: Assign graduate students to positions
 assigned_students = assign_grad_students(courses, course_directors, grad_students)
 
-# Step 11: Generate assignment report
-report = generate_assignment_report(courses, assigned_students)
+# Step 11: Generate assignment report and a CSV
+report = generate_assignment_report(courses, assigned_students, 'assignment_report.txt')
 
 # Print the report
 print(report)
-
-# Save the report to a CSV
