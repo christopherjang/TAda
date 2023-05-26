@@ -14,12 +14,12 @@ class CourseDirector:
     def __init__(self, name):
         self.name = name
         self.requests = []
-        self.preferences = []
+        self.avoid = []
 
 
 class GradStudent:
     def __init__(self, name):
         self.name = name
         self.requests = []
-        self.preferences = []
+        self.avoid = []
         self.experience = []

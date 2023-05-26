@@ -1,7 +1,4 @@
-from logic import assign_grad_students
-
-
-def generate_assignment_report(courses, course_directors, grad_students):
+def generate_assignment_report(courses, assigned_students):
     report = "Assignment Report\n\n"
 
     for course_name, course in courses.items():
@@ -9,9 +6,10 @@ def generate_assignment_report(courses, course_directors, grad_students):
 
         for position in course.positions:
             report += f"\tPosition: {position.name}\n"
-
-            if position.assigned_student:
-                report += f"\t\tAssigned Student: {position.assigned_student}\n"
+            assigned_students_for_position = [student for student, assigned_position in assigned_students if assigned_position == position]
+            if assigned_students_for_position:
+                for assigned_student in assigned_students_for_position:
+                    report += f"\t\tAssigned Student: {assigned_student}\n"
             else:
                 report += "\t\tNo student assigned\n"
 

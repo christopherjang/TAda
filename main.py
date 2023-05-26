@@ -61,7 +61,7 @@ for _, row in course_director_avoid_df.iterrows():
         course_directors[course_name] = CourseDirector(course_name)
 
     course_director = course_directors[course_name]
-    course_director.preferences.append(ta_to_avoid)
+    course_director.avoid.append(ta_to_avoid)
 
 # Step 9: Populate GradStudent class and their requests/preferences/experience
 grad_students = {}
@@ -83,7 +83,7 @@ for _, row in grad_students_avoid_df.iterrows():
         grad_students[student_name] = GradStudent(student_name)
 
     grad_student = grad_students[student_name]
-    grad_student.preferences.extend(courses_to_avoid.split(','))
+    grad_student.avoid.extend(courses_to_avoid.split(','))
 
 for _, row in grad_students_experience_df.iterrows():
     student_name = row['Grad Student']
@@ -96,15 +96,12 @@ for _, row in grad_students_experience_df.iterrows():
     grad_student.experience.extend(previous_experience.split(','))
 
 # Step 10: Assign graduate students to positions
-assign_grad_students(courses, course_directors, grad_students)
+assigned_students = assign_grad_students(courses, course_directors, grad_students)
 
 # Step 11: Generate assignment report
-report = generate_assignment_report(courses, course_directors, grad_students)
-
+report = generate_assignment_report(courses, assigned_students)
 
 # Print the report
 print(report)
 
-# Save the report to a file
-with open("assignment_report.txt", "w") as file:
-    file.write(report)
+# Save the report to a CSV
